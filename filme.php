@@ -1,54 +1,64 @@
 <?php
 $filmes = [
-    [
-        'id' => 1,
+    1 => [
         'titulo' => 'A General (1926)',
-        'poster' => 'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/92/49/12/20202917.jpg',
-        'video' => 'https://archive.org/download/TheGeneral1926/TheGeneral1926.mp4'
+        'video' => 'https://archive.org/embed/TheGeneral1926'
     ],
-    [
-        'id' => 2,
+    2 => [
         'titulo' => 'Nosferatu (1922)',
-        'poster' => 'https://images.eu-west-1.prod.magine.com/i/filmicca/v/164c30c6-2fb7-4130-bc37-a65b9fdd97ff.jpg',
-        'video' => 'https://www.youtube.com/watch?v=-l2uo7h3c1U&t=2611s'
+        'video' => 'https://archive.org/embed/Nosferatu1922VHS'
     ],
-    [
-        'id' => 3,
-        'titulo' => 'Viagem à Lua (1902',
-        'poster' => 'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/92/15/32/20183442.jpg',
-        'video' => 'https://www.youtube.com/watch?v=S5dG3Skdq6U'
+    3 => [
+        'titulo' => 'Viagem à Lua (1902)',
+        'video' => 'https://archive.org/embed/LeVoyageDansLaLun'
     ],
-     [
-        'id' => 4,
+    4 => [
         'titulo' => 'A Saída dos Operários da Fábrica Lumière (1895)',
-        'poster' => 'https://m.media-amazon.com/images/M/MV5BYjdkY2I3ZDItMmY2MC00ZmU1LTk4NTYtMzcwMWM4MzYzOTA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
-        'video' => 'https://www.youtube.com/watch?v=xZx3eEr1pqc'
-     ],
-     [
-        'id' => 5,
+        'video' => 'https://archive.org/embed/LaSortieDeLUsineLumireLyon'
+    ],
+    5 => [
         'titulo' => 'O Garoto (1921)',
-        'poster' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREZeHeec_OA6QuiolKmnUgatqc_vmOM1agBA&s',
-        'video' => 'https://www.youtube.com/watch?v=q1U0eKOOwsQ'
-     ]
+        'video' => 'https://archive.org/embed/TheKid_201708'
+    ]
 ];
-?>
-<?php include 'includes/header.php'; ?>
 
-<div class="container mt-4">
-    <h2>Filmes Disponíveis</h2>
-    <div class="row">
-        <?php foreach ($filmes as $f): ?>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="<?= $f['poster'] ?>" class="card-img-top" alt="<?= $f['titulo'] ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $f['titulo'] ?></h5>
-                        <a href="filme.php?id=<?= $f['id'] ?>" class="btn btn-primary">Assistir</a>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
+$id = $_GET['id'] ?? null;
+if (!$id || !isset($filmes[$id])) {
+    die('Filme não encontrado.');
+}
+$filme = $filmes[$id];
+include 'includes/header.php';
+?>
+
+<div class="container mt-4 text-center">
+    <h2><?= htmlspecialchars($filme['titulo']) ?></h2>
+    <div class="mt-4">
+        <?php
+        $video = $filme['video'];
+
+        // Player do YouTube
+        if (strpos($video, 'youtube.com') !== false || strpos($video, 'youtu.be') !== false) {
+            preg_match('/(v=|be\/)([a-zA-Z0-9_-]+)/', $video, $match);
+            $idVideo = $match[2] ?? '';
+            echo "<iframe width='100%' height='500' src='https://www.youtube.com/embed/$idVideo' frameborder='0' allowfullscreen></iframe>";
+        }
+        // Player do Internet Archive (embed)
+        elseif (strpos($video, 'archive.org/embed/') !== false) {
+            echo "<iframe src='$video' width='100%' height='500' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+        }
+        // Fallback: arquivo MP4 direto
+        elseif (strpos($video, '.mp4') !== false) {
+            echo "<video width='100%' height='500' controls>
+                    <source src='$video' type='video/mp4'>
+                    Seu navegador não suporta o elemento de vídeo.
+                  </video>";
+        }
+        else {
+            echo "<p>Formato de vídeo não reconhecido.</p>";
+        }
+        ?>
     </div>
+    <a href="index.php" class="btn btn-secondary mt-3">← Voltar</a>
 </div>
 
 <?php include 'includes/footer.php'; ?>
