@@ -29,6 +29,36 @@ $filmes = [
         'titulo' => 'O Garoto (1921)',
         'poster' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREZeHeec_OA6QuiolKmnUgatqc_vmOM1agBA&s',
         'video' => 'https://archive.org/embed/TheKid_201708'
+    ],
+    [
+        'id' => 6,
+        'titulo' => 'Blackmail (1929)',
+        'poster' => 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Blackmail_1929_poster.jpg/250px-Blackmail_1929_poster.jpg',
+        'video' => 'https://archive.org/embed/blackmail_1929'
+    ],
+    [
+        'id' => 7,
+        'titulo' => 'Steamboat Willie (1928)',
+        'poster' => 'https://upload.wikimedia.org/wikipedia/commons/5/50/Steamboat_Willie_1928_Poster.png',
+        'video' => 'https://archive.org/embed/steamboat-willie_1928'
+    ],
+    [
+        'id' => 8,
+        'titulo' => 'O Garoto (1921)',
+        'poster' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREZeHeec_OA6QuiolKmnUgatqc_vmOM1agBA&s',
+        'video' => 'https://archive.org/embed/TheKid_201708'
+    ],
+    [
+        'id' => 9,
+        'titulo' => 'O Garoto (1921)',
+        'poster' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREZeHeec_OA6QuiolKmnUgatqc_vmOM1agBA&s',
+        'video' => 'https://archive.org/embed/TheKid_201708'
+    ],
+    [
+        'id' => 10,
+        'titulo' => 'O Garoto (1921)',
+        'poster' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREZeHeec_OA6QuiolKmnUgatqc_vmOM1agBA&s',
+        'video' => 'https://archive.org/embed/TheKid_201708'
     ]
 ];
 ?>

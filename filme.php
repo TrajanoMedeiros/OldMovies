@@ -19,6 +19,26 @@ $filmes = [
     5 => [
         'titulo' => 'O Garoto (1921)',
         'video' => 'https://archive.org/embed/TheKid_201708'
+    ],
+    6 => [
+        'titulo' => 'Blackmail (1929)',
+        'video' => 'https://archive.org/embed/blackmail_1929'
+    ],
+    7 => [
+        'titulo' => 'Steamboat Willie (1928)',
+        'video' => 'https://archive.org/embed/steamboat-willie_1928'
+    ],
+    8 => [
+        'titulo' => 'O Garoto (1921)',
+        'video' => 'https://archive.org/embed/TheKid_201708'
+    ],
+    9 => [
+        'titulo' => 'O Garoto (1921)',
+        'video' => 'https://archive.org/embed/TheKid_201708'
+    ],
+    10 => [
+        'titulo' => 'O Garoto (1921)',
+        'video' => 'https://archive.org/embed/TheKid_201708'
     ]
 ];
 
